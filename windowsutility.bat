@@ -115,7 +115,8 @@ echo 1. DeBloat (Use it wisely,will speed up windows and free up space.)
 echo 2. Clear Temporary folders
 echo 3. Activate windows (Opens New Window)
 echo 4. Help
-echo 5. Previous Page
+echo 5. Install Programs
+echo 6. Previous Page
 echo ===============================
 set /p option=">> "
 
@@ -123,7 +124,8 @@ if "%option%"=="1" goto debloat
 if "%option%"=="2" goto tempclear
 if "%option%"=="3" goto activatewindows
 if "%option%"=="4" goto help
-if "%option%"=="5" goto main
+if "%option%"=="5" goto programs
+if "%option%"=="6" goto main
 
 :debloat
 echo Starting the debloating process...
@@ -237,3 +239,165 @@ echo Windows activation process completed!
 pause
 exit
 pause
+
+:programs
+title 'Programs'
+cls
+echo ====================================
+echo               Programs
+echo ====================================
+echo 1. Option 1 - Install
+echo 2. Option 2 - Uninstall
+echo 3. Option 3 - Back
+echo ====================================
+set /p choice="Please choose an option (1-3): "
+
+if "%choice%"=="1" goto installprog
+if "%choice%"=="2" goto uninstallprog
+if "%choice%"=="3" goto main
+
+echo Invalid choice. Please choose a number from 1 to 3.
+pause
+goto programs
+
+:installprog
+title 'Programs'
+cls
+echo ====================================
+echo               Programs
+echo ====================================
+echo 1. Option 1 - Search Engine
+echo 2. Option 2 - Other
+echo 3. Option 3 - Back
+echo ====================================
+set /p choice="Please choose an option (1-3): "
+
+if "%choice%"=="1" goto sengine
+if "%choice%"=="2" goto otherinstall
+if "%choice%"=="3" goto programs
+
+echo Invalid choice. Please choose a number from 1 to 3.
+pause
+goto installprog
+
+:sengine
+
+title 'Programs'
+cls
+echo ====================================
+echo               Programs
+echo ====================================
+echo 1. Option 1 - Google Chrome
+echo 2. Option 2 - Microsoft Edge
+echo 3. Option 3 - Mozilla Firefox
+echo 4. Option 4 - Opera Browser
+echo 5. Option 5 - Brave Browser
+echo 6. Option 6 - Vivaldi Browser
+echo 7. Option 7 - Back
+echo ====================================
+set /p choice="Please choose an option (1-7): "
+
+if "%choice%"=="1" goto googleinstall
+if "%choice%"=="2" goto edgeinstall
+if "%choice%"=="3" goto firefoxinstall
+if "%choice%"=="4" goto operainstall
+if "%choice%"=="5" goto braveinstall
+if "%choice%"=="6" goto vivaldiinstall
+if "%choice%"=="7" goto programs
+
+echo Invalid choice. Please choose a number from 1 to 7.
+pause
+goto installprog
+
+:googleinstall
+winget install --id Google.Chrome --silent
+timeout /t 3
+goto programs
+
+:edgeinstall
+winget install --id Microsoft.Edge --silent
+timeout /t 3
+goto programs
+
+:firefoxinstall
+winget install --id Mozilla.Firefox --silent
+timeout /t 3
+goto programs
+
+:operainstall
+winget install --id Opera.Opera --silent
+timeout /t 3
+goto programs
+
+:braveinstall
+winget install --id Brave.Brave --silent
+timeout /t 3
+goto programs
+
+:vivaldiinstall
+winget install --id VivaldiTechnologies.Vivaldi --silent
+timeout /t 3
+goto programs
+
+:uninstallprog
+control appwiz.cpl
+timeout /t 3
+goto programs
+
+:otherinstall
+title 'Programs'
+cls
+echo ====================================
+echo               Programs
+echo ====================================
+echo 1. Option 1 - Steam
+echo 2. Option 2 - Visual Studio Code
+echo 3. Option 3 - CrystalDiskInfo
+echo 4. Option 4 - GPU-Z
+echo 5. Option 5 - CPU-Z
+echo 6. Option 6 - Epic Games Launcher
+echo 7. Option 7 - Back
+echo ====================================
+set /p choice="Please choose an option (1-7): "
+
+if "%choice%"=="1" goto steam
+if "%choice%"=="2" goto vscode
+if "%choice%"=="3" goto crystaldiskinfo
+if "%choice%"=="4" goto gpuz
+if "%choice%"=="5" goto cpuz
+if "%choice%"=="6" goto epicgames
+if "%choice%"=="7" goto programs
+
+echo Invalid choice. Please choose a number from 1 to 7.
+pause
+goto programs
+
+:steam
+winget install --id Valve.Steam --silent
+timeout /t 3
+goto programs
+
+:vscode
+winget install --id Microsoft.VisualStudioCode --silent
+timeout /t 3
+goto programs
+
+:crystaldiskinfo
+winget install --id hiyohiyo.crystaldiskinfo --silent
+timeout /t 3
+goto programs
+
+:gpuz
+winget install --id TechPowerUp.GPU-Z --silent
+timeout /t 3
+goto programs
+
+:cpuz
+winget install --id CPUID.CPU-Z --silent
+timeout /t 3
+goto programs
+
+:epicgames
+winget install --id EpicGames.EpicGamesLauncher --silent
+timeout /t 3
+goto programs
